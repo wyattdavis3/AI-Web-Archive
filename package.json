@@ -1,0 +1,25 @@
+{
+  "name": "ai-web-archive",
+  "version": "1.0.0",
+  "description": "Turn any webpage into AI-ready HTML, Markdown and Text",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "keywords": ["chrome-extension", "ai", "web-archive"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chrome": "^0.0.270",
+    "@types/turndown": "^5.0.5",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10",
+    "vite-plugin-chrome-extension": "^0.0.7"
+  },
+  "dependencies": {
+    "@mozilla/readability": "^0.5.0",
+    "turndown": "^7.2.0"
+  }
+}

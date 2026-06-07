@@ -59,7 +59,19 @@ Built-in diagnostic center featuring:
 
 ### Export Result
 
-Coming Soon
+![Export Result](docs/images/export-result.png)
+
+Description:
+
+Example of a ChatGPT conversation archived by AI Web Archive.
+
+Preserved content includes:
+
+* User prompts
+* AI responses
+* Image groups
+* Rich text formatting
+* Dark theme styling
 
 ## Installation
 

@@ -227,9 +227,22 @@ async function capturePage() {
       return;
     }
 
-    logger.log('Sending capture message to content script');
-    // 发送消息到 content script
-    const response = await chrome.tabs.sendMessage(tab.id, { action: 'capture' });
+    let response;
+    try {
+      logger.log('Sending capture message to content script');
+      response = await chrome.tabs.sendMessage(tab.id, { action: 'capture' });
+    } catch (sendError) {
+      logger.warn('Content script not found, injecting it now', { error: sendError });
+      // Content script 未找到，先注入它
+      await chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        files: ['content.js']
+      });
+      // 等待一下然后再发送消息
+      await new Promise(resolve => setTimeout(resolve, 100));
+      logger.log('Content script injected, retrying capture');
+      response = await chrome.tabs.sendMessage(tab.id, { action: 'capture' });
+    }
 
     logger.log('Got result from content script', { hasResult: !!response });
 
